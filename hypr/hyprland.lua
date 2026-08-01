@@ -32,7 +32,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "kitty"
-local fileManager = "yazi"
+local fileManager = "thunar"
 local menu = "hyprlauncher"
 -- local screenshot = "flameshot gui"
 
