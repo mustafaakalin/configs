@@ -7,4 +7,5 @@ return {
   { "chriskempson/base16-vim" },
   { "mkarmona/colorsbox" },
   { "EdenEast/nightfox.nvim" },
+  { "rose-pine/neovim" },
 }
