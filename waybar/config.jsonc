@@ -259,12 +259,13 @@
         "on-click": "wlogout"
     },
     "custom/pacman": {
-        "format": "{}   ",
-        "interval": 3600, // every hour
-        "exec": "checkupdates | wc -l", // # of updates
-        "exec-if": "exit 0", // always run; consider advanced run conditions
-        "on-click": "sudo pacman -Syu; pkill -SIGRTMIN+8 waybar", // update system
-        "signal": 8
+      "return-type": "json",
+      "interval": 3600,
+      "exec": "~/.config/waybar/scripts/pacman-updates.sh",
+      "format": "{}  ",
+      "tooltip": true,
+      "on-click": "kitty -e sudo pacman -Syu",
+      "signal": 8
     },
     "custom/brightness": {
         "format": "{icon} {percentage}%",
