@@ -21,6 +21,7 @@ sudo waydroid init
 sudo systemctl enable --now waydroid-container.service
 waydroid session start # https://wiki.archlinux.org/title/Waydroid
 waydroid show-full-ui
+sudo mount --bind ~/Downloads ~/.local/share/waydroid/data/media/0/Download 
 ```
 ```bash
 sudo systemctl enable --now cups.service
