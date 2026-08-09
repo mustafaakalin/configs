@@ -23,4 +23,5 @@ waydroid show-full-ui
 ```
 ```bash
 sudo systemctl enable --now cups.service
+# http://localhost:631/
 ```
