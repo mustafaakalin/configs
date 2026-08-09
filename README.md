@@ -18,6 +18,7 @@ sudo systemctl enable --now libvirtd.service
 android
 ```bash
 sudo waydroid init
+sudo systemctl enable --now waydroid-container.service
 waydroid session start # https://wiki.archlinux.org/title/Waydroid
 waydroid show-full-ui
 ```
