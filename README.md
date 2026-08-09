@@ -13,8 +13,11 @@ virtual machine
 ```bash
 # https://wiki.archlinux.org/title/Users_and_groups#Group_management
 usermod -aG libvirt $USER  # https://wiki.archlinux.org/title/Virt-manager
+sudo systemctl enable --now libvirtd.service
 ```
 android
 ```bash
-waydroid init
+sudo waydroid init
+waydroid session start # https://wiki.archlinux.org/title/Waydroid
+waydroid show-full-ui
 ```
