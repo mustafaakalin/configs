@@ -36,4 +36,6 @@ laravel
 ```bash
 composer global require laravel/installer
 ```
-
+```bash
+sudo sensors-detect
+```
