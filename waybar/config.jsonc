@@ -26,7 +26,8 @@
     "mpd",
     "idle_inhibitor",
     "pulseaudio",
-    "network",
+    //"network",
+    "custom/network-info",
     "bluetooth",
     "power-profiles-daemon",
     "cpu",
@@ -141,10 +142,10 @@
     "format": "{}% "
   },
   "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
+    "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
     "format-icons": [
       "",
@@ -362,5 +363,12 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "custom/network-info": {
+    "exec": "~/.config/waybar/scripts/network-info.sh",
+    "return-type": "json",
+    "interval": 2,
+    "tooltip": true,
+    "on-click": "nm-connection-editor"
   },
 }
