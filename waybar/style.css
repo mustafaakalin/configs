@@ -332,3 +332,25 @@ label:focus {
 #custom-notification {
   font-family: "NotoSansMono Nerd Font";
 }
+
+#custom-network-info {
+color: #89b4fa;
+padding: 0 10px;
+}
+
+#custom-network-info:hover {
+color: #cdd6f4;
+background: #313244;
+}
+
+#custom-network-info.Wi-Fi {
+color: #89b4fa;
+}
+
+#custom-network-info.Ethernet {
+color: #a6e3a1;
+}
+
+#custom-network-info.offline {
+color: #f38ba8;
+}
