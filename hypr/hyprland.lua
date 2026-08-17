@@ -24,6 +24,7 @@ hl.monitor({
 	mode = "preferred",
 	position = "auto",
 	scale = "auto",
+	bitdepth = 8,
 })
 
 ---------------------
@@ -34,6 +35,11 @@ hl.monitor({
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "hyprlauncher"
+local clipboard = "cursor-clip"
+local wallpaper = "hyprpaper"
+local browser = "firefox"
+local calculator = "qalculator-gtk"
+local emojipicker = "hypremoji"
 -- local screenshot = "flameshot gui"
 
 -------------------
@@ -48,7 +54,7 @@ local menu = "hyprlauncher"
 hl.on("hyprland.start", function()
 	hl.exec_cmd(terminal)
 	hl.exec_cmd("nm-applet")
-	hl.exec_cmd("udiskie & waybar & hyprpaper & swaync & firefox")
+	hl.exec_cmd("cursor-clip --daemon & udiskie & waybar & hyprpaper & swaync & firefox")
 end)
 
 -------------------------------
@@ -59,6 +65,8 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -219,9 +227,10 @@ hl.config({
 		kb_layout = "tr",
 		kb_variant = "",
 		kb_model = "",
-		kb_options = "",
+		kb_options = "grp:alt_shift_toggle",
 		kb_rules = "",
 
+		numlock_by_default = true,
 		follow_mouse = 1,
 
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
@@ -260,7 +269,11 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+-- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(clipboard))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(wallpaper))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
@@ -290,6 +303,15 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
+-- Move
+hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.move({ direction = "down" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -329,6 +351,8 @@ hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 -- screenshot a region
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 
+hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd(calculator))
+hl.bind(mainMod .. " + ALT + E", hl.dsp.exec_cmd(emojipicker))
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
