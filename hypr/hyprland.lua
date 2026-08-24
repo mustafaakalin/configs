@@ -121,14 +121,14 @@ hl.config({
 		inactive_opacity = 1.0,
 
 		shadow = {
-			enabled = true,
+			enabled = false,
 			range = 4,
 			render_power = 3,
 			color = 0xee1a1a1a,
 		},
 
 		blur = {
-			enabled = true,
+			enabled = false,
 			size = 3,
 			passes = 1,
 			vibrancy = 0.1696,
@@ -136,7 +136,7 @@ hl.config({
 	},
 
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 })
 
@@ -235,6 +235,8 @@ hl.config({
 
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
+		repeat_rate = 15, -- default 25
+		repeat_delay = 175, -- default 600
 		touchpad = {
 			natural_scroll = false,
 		},
